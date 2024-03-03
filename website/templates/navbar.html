@@ -1,0 +1,45 @@
+{% load static %}
+
+<nav class="navbar bg-dark navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <img src="{% static 'tablitsa_477qt35j69yi_32.png' %}" alt = "Лого" class="ps-5 pe-2">
+      <a class="navbar-brand py-2" href="{% url 'home' %}">WebCRM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          {% if user.is_authenticated %}
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Клиенты</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'order_list' %}">Заказы</a>
+          </li>
+          
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Создать аккаунт</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Войти</a>
+          </li>
+          {% endif %}
+        </ul>
+
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link">Пользователь {{ user.username }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+
+    </div>
+  </nav>

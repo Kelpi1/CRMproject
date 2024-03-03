@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+    {% if searched %}
+
+        <h1>Найдено по вашему запросу {{searched}}:</h1> 
+
+        {% for order in orders %}
+
+        {% endfor %}
+
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">ID заказа</th>
+                <th scope="col">Товар</th>
+                <th scope="col">Производитель</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Наценка</th>
+                <th scope="col">Дата добавления</th>
+                <th scope="col">Имя клиента</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% if orders %}
+                {% for order in orders %}
+                <tr>
+                    <td><a class="link-dark link-underline link-underline-opacity-0 link-underline-opacity-50-hover" href="{% url 'order' order.id %}">{{ order.id }}</a></td>
+                    <td>{{ order.product_name }}</td>
+                    <td>{{ order.producer }}</td>
+                    <td>{{ order.price }} руб.</td>
+                    <td>{{ order.margin }} руб.</td>
+                    <td>{{ order.created_at }} </td>
+                    <td>{{ order.client_name }}</td>
+                    <td><a class="btn btn-secondary" href="{% url 'order' order.id %}">Просмотр</a></td>
+                </tr>
+                {% endfor %}
+                    
+            {% endif %}
+    
+    {% else %}
+        <h1>Вы отправили пустой запрос</h1>
+    {% endif %}
+
+
+{% endif %}
+
+{% endblock %}

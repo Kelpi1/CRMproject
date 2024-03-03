@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <br>
+    <h1>Добавить клиента</h1>
+
+    <form method="POST" action="{% url 'add_client' %}">
+        {% csrf_token %}
+
+        {{ form.as_p}}
+
+    
+        <button type="submit" class="btn btn-success">Добавить клиента</button>
+        <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+    </form>
+
+
+</div>
+
+{% endblock %}

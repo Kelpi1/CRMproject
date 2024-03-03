@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="col-md-6 offset-md-3">
+  <h1>Запись клиента</h1>
+  <br>
+
+  <div class="card">
+      <div class="card-header">
+        <strong>{{ client_record.first_name }} {{ client_record.last_name }}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+          <p class="card-text"><strong>Email: </strong>{{ client_record.email }}</p>
+          <p class="card-text"><strong>Телефон: </strong>{{ client_record.phone }}</p>
+          <p class="card-text"><strong>Город: </strong>{{ client_record.city }}</p>
+          <p class="card-text"><strong>Адрес: </strong>{{ client_record.address }}</p>
+          <p class="card-text"><strong>Id: </strong>{{ client_record.id }}</p>
+          <p class="card-text"><strong>Дата добавления: </strong>{{ client_record.created_at }}</p>
+          <p class="card-text"><strong>Заказы: </strong>{{ order.product_name }}</p>
+
+        <br>
+        <a class="btn btn-dark" href="{% url 'home' %}">Назад</a>
+
+        <a class="btn btn-primary" href="{% url 'update_client' client_record.id %}">Редактировать</a>
+
+        <a onclick="return confirm('Вы уверены, что хотите удалить эту запись?')" class="btn btn-danger" href="{% url 'delete_client' client_record.id %}">Удалить</a>
+
+
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
