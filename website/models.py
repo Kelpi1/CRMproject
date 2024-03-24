@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Client(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    created_at = models.DateTimeField('Дата', auto_now_add=True)
+    first_name = models.CharField('Имя', max_length=50)
+    last_name = models.CharField('Фамилия', max_length=50)
     email = models.CharField(max_length=100)
     phone = models.CharField(max_length=15)
     city = models.CharField(max_length=50)
